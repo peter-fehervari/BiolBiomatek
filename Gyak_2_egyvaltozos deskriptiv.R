@@ -186,9 +186,28 @@ mydata %>%
 library(patchwork)
 histo+(qq+coord_flip())
 
-# histogramok, simított és nem simított, qq-plot 
 # boxplot, violinplot
-# származtatott változók készítése, transzformálás
+
+with(mydata, boxplot(BodyMass,
+                     ylab="BodyMass"))
+
+bplot <- with(mydata,boxplot.stats(BodyMass))
+
+mydata %>% ggplot(aes(y=BodyMass))+
+  geom_boxplot(notch = F)
+
+mydata %>% ggplot(aes(y=BodyMass,
+                      x=Sex))+
+  geom_boxplot(notch = T)
+
+#violinplot
+mydata %>% ggplot(aes(y=BodyMass,
+                      x=Sex))+
+  geom_violin(fill="grey75")+
+  geom_boxplot(notch = F,
+               width = 0.1)
+
+## származtatott változók készítése, transzformálás
 
 
 #### Egy kategoriális változó jellemzése #####
