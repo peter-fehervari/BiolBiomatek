@@ -207,8 +207,13 @@ mydata %>% ggplot(aes(y=BodyMass,
   geom_boxplot(notch = F,
                width = 0.1)
 
-## származtatott változók készítése, transzformálás
+## származtatott változók készítése, transzformálás standardizálás studentizálás rang transzformáció
 
+# xydollárvalami egyenlővel
+# mutate vs transmutate
+# scale
+# rank
+with(mydata,rank(BodyMass))
 
 #### Egy kategoriális változó jellemzése #####
 #Dataset: falcon.csv
