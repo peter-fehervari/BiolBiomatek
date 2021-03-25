@@ -38,6 +38,7 @@ mydata %>%
 # Módusz egy kicsit nehezebb eset mert nincs ilyen base függvény(!)
 # kell csinálni egyet:
 
+
 Mode <- function(x, na.rm = FALSE) {
   if(na.rm){
     x = x[!is.na(x)]
