@@ -173,22 +173,22 @@ mydata %>%
 mydata %>% 
   ggplot(aes(sample=BodyMass))+
   geom_qq()+
-  geom_qq_line() -> histo
+  geom_qq_line()+
+  scale_y_continuous(limits = c(110,210))-> histo
 
 mydata %>% 
   ggplot(aes(x=BodyMass,
              y=..density..))+
   geom_histogram(fill="black")+
   geom_density(fill="grey75",
-               alpha=0.7)-> qq
+               alpha=0.7)+
+  scale_x_continuous(limits = c(110,210))+
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank()) -> qq
 
 
 library(patchwork)
 histo+(qq+coord_flip())
-
-# histogramok, simított és nem simított, qq-plot 
-# boxplot, violinplot
-# származtatott változók készítése, transzformálás
 
 
 #### Egy kategoriális változó jellemzése #####
