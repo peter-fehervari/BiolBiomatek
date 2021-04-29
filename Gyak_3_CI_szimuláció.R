@@ -172,4 +172,4 @@ CI_cover_sims <- function(n=10,
 
 CI_cover_sims(n=10,
               mintak_szama = 200,
-              sigma=10)
+              sigma=4)
