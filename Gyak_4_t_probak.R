@@ -5,6 +5,7 @@ library(tidyverse)
 library(RcmdrMisc)
 library(patchwork)
 library(car)
+
 ## Adatbeolvasás:
 
 mydata <- read.table(file = "falcon.csv", 
@@ -50,16 +51,26 @@ histo+(qq+coord_flip())
 t.test(mydata$WingLength,
        mu = 142.3)
 
-str(mydata)
+# Szignifikáns különbséget találtunk (Egy mintás t-próba: t = -9.3, df=388, p << 0.001)
+
+egymintas_t <- t.test(mydata$WingLength,
+       mu = 142.3)
+
+str(egymintas_t)
+
+egymintas_t$p.value
 
 # FELADAT:
 # Tartható-e az az álláspont, 
 #hogy a felkarcsont hosszának várható értéke 60.5 mm?
 
+t.test(mydata$WBone,
+       mu = 60.5)
 
 ######### független mintás t-próba #######
 
 # Eltér-e a hímek és a tojók szárnyhossz várható értéke?
+# H0 Mu_h = Mu_t
 
 # D&E
 
@@ -122,13 +133,13 @@ points(density(lile$B_CSUD),
        type = "l",
        col = "tomato")
 
+
 # Páros t-próba feltételei?
 
 lile$Csud_kul <- lile$J_CSUD-lile$B_CSUD
 
 numSummary(lile$Csud_kul)
 
-hist(lile$Csud_kul)
 
 # A két teszt indentikus
 t.test(lile$Csud_kul,mu=0)
